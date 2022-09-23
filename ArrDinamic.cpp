@@ -8,10 +8,11 @@ Ejemplo: Pedir al usuario n calificaciones y almacernarlos en un arreglo dinamic
 */
 
 #include <iostream>
-#include <stdlib.h>
+#include <stdlib.h> // Funcion new y delete.
 
 using namespace std;
 
+// Prototipo de funciones.
 void pedirDatos();
 void printDatos();
 
@@ -21,7 +22,7 @@ int main()
 {
     pedirDatos();
     printDatos();
-    delete[] calif;
+    delete[] calif; // Se libera los bytes reservados con anterioridad
 
     return 0;
 }
