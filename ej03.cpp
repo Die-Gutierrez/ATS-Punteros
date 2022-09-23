@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    int A[10], B[10], j=0;
+    int A[10];
     int *pun;
     
     cout<<"\n\tRELLENE EL ARREGLO"<<endl;
@@ -14,18 +14,15 @@ int main()
     {
         cout<<"Digite un numero ["<<i<<"]: ";
         cin>>A[i];
-        if(A[i]%2==0)
-        {
-            B[j] = A[i];
-            j++;
-        }
     }
-    pun = B;
-    for(int i=0;i<j;i++)
+    pun = A; // Se empezo apuntar al Array.
+    for(int i=0;i<10;i++)
     {
-        cout<<"El numero "<<*pun++<<" es par, y su direccion de memoria es "<<&B[i]<<endl;
+        if(*pun%2==0) // Se puede usar punteros tanto en estructuras de condicion
+        {
+            cout<<"El numero "<<*pun<<" es par y su direccion es "<<pun<<endl; // Imprime de manera correcta.
+        }
+        pun++; // Se pasa a la siguiente componente del arreglo.
     }
-
-
     return 0;
 }
