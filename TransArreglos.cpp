@@ -3,6 +3,7 @@
 // Ejem: Hallar el Maximo Valor de un Arreglo.
 
 #include <iostream>
+#include <stdlib.h> // Libera que contiene "new y delete".
 
 using namespace std;
 
@@ -10,13 +11,21 @@ int maximoValor(int *DirVec, int nElementos);
 
 int main()
 {
-    const int nElementos = 5;
-    int Arr[nElementos] = {1,2,3,4,5};
+    int nElementos, *arr; // Un PUNTERO solamente apunta a una Direccion de MEMORIA.
 
-    // Al pasar un Vector a una Funcion de tipo Puntero, se pasa tanto asi "Arr" o "&Arr[0]", al final lo que se pasa es la 
-    // direccion de memoria.
-    // En esta llamada a la Funcion, se esta haciendo que el puntero "*DirVec" apunte al primero elemento del arreglo.
-    cout<<"El valor Maximo del Vector es: "<<maximoValor(Arr, nElementos);
+    cout<<"Total de elementos: ";
+    cin>>nElementos;
+    // Proceso de convertir un Puntero a un Arreglo.
+    arr = new int(nElementos); // Mediante new -> se hizo una reserva de bytes
+    // arr -> es un arreglo
+    for(int i=0;i<nElementos;i++)
+    {
+        cout<<"Digite un numero ["<<i+1<<"]: ";
+        cin>>arr[i];
+    }
+    // Se esta enviando un Arreglo, por lo tanto cumple con "Transmision de Arreglos".
+    cout<<"El mayor elemento del arreglo es: "<<maximoValor(arr, nElementos);
+    delete [] arr;
 
     return 0;
 }
@@ -24,9 +33,11 @@ int maximoValor(int *DirVec, int nElementos)
 {
     int max=0;
 
+    // *DirVec, solo apunta al primer elemento del Arreglo.
+
     for(int i=0;i<nElementos;i++)
     {
-        // Mediante la forma de "*(DirVec)" se expresa que el PUNTERO apunta al 1er indice del arreglo.
+        // Para que la operacion se haga con el valor de una variable de tipo puntero, se debe colocar siempre " *example ".
         if(*(DirVec+i) > max)
         {
             max = *(DirVec+i);
